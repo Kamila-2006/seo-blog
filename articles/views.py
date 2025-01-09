@@ -60,10 +60,12 @@ def blog_detail(request, year, month, day,slug):
                 email = email,
                 comment = comment
             )
-            return redirect(reverse('articles:success-comment'))
+            return redirect(reverse('articles:success-comment', kwargs={'slug': slug}))
     comments = article.comments.all()
     ctx = {'article':article, 'comments':comments}
     return render(request, 'articles/blog-detail.html', ctx)
 
-def success_comment(request):
-    return render(request, 'articles/success-comment.html')
+def success_comment(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    ctx = {'article':article}
+    return render(request, 'articles/success-commented.html', ctx)

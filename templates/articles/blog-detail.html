@@ -40,5 +40,8 @@
             </div>
             <button type="submit">Yuborish</button>
         </form>
+        {% if form_submitted %}
+            <a href="{% url 'articles:success-comment' slug=article.slug %}" class="button">Izoh muvaffaqiyatli qoldirildi</a>
+        {% endif %}
     </section>
 {% endblock %}
