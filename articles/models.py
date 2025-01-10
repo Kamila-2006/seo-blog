@@ -6,6 +6,7 @@ import uuid
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
     content = models.TextField()
     author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='articles')
     image = models.ImageField(upload_to='images/')

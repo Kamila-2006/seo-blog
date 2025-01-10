@@ -1,9 +1,9 @@
 <nav>
     <a href="{% url 'home' %}">Asosiy</a>
-    <a href="#">Web Dasturlash</a>
-    <a href="#">Mobil Dasturlash</a>
-    <a href="#">AI va ML</a>
-    <a href="#">Dasturchilar hayoti</a>
+    <a href="{% url 'articles:category' 'Web Dasturlash' %}">Web Dasturlash</a>
+    <a href="{% url 'articles:category' 'Mobil Dasturlash' %}">Mobil Dasturlash</a>
+    <a href="{% url 'articles:category' 'AI va ML' %}">AI va ML</a>
+    <a href="{% url 'articles:category' 'Dasturchilar hayoti' %}">Dasturchilar hayoti</a>
     <a href="{% url 'articles:create-author' %}">Yangi Muallif Qo'shish</a>
     <a href="{% url 'articles:create-article' %}">Yangi Maqola Qo'shish</a>
 </nav>

@@ -25,6 +25,7 @@ def create_author(request):
 def create_article(request):
     if request.method == 'POST':
         title = request.POST.get('title')
+        category = request.POST.get('category')
         content = request.POST.get('content')
         author_id = request.POST.get('author')
         image = request.FILES.get('image')
@@ -32,6 +33,7 @@ def create_article(request):
             author = Author.objects.get(id=author_id)
             article = Article.objects.create(
                 title = title,
+                category = category,
                 content = content,
                 author = author,
                 image = image
@@ -69,3 +71,8 @@ def success_comment(request, slug):
     article = get_object_or_404(Article, slug=slug)
     ctx = {'article':article}
     return render(request, 'articles/success-commented.html', ctx)
+
+def post_by_category(request, category):
+    articles = Article.objects.filter(category=category)
+    ctx = {'articles':articles, 'category':category}
+    return render(request, 'articles/articles-by-category.html', ctx)
